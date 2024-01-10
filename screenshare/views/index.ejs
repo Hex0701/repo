@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen Sharing App</title>
+</head>
+<body>
+  <h1>Screen Sharing App</h1>
+  <label for="roomInput">Enter Room:</label>
+  <input type="text" id="roomInput" placeholder="Enter room name">
+  <button onclick="joinRoom()">Join Room</button>
+
+  <div id="userList"></div>
+
+  <button onclick="startScreenShare()">Start Screen Share</button>
+  <div id="screenShare"></div>
+
+  <script src="socket.io/socket.io.js"></script>
+  <script src="/peer/dist/bin/peerjs.js"></script>
+  <script>
+    const socket = io();
+    const peer = new Peer(undefined, { host: '/', port: '3001' });
+
+    let myStream;
+    navigator.mediaDevices
+      .getUserMedia({ video: true, audio: false })
+      .then((stream) => {
+        myStream = stream;
+        const video = document.createElement('video');
+        video.muted = true;
+        addVideoStream(video, stream);
+      })
+      .catch((error) => console.error('Error accessing video:', error));
+
+    socket.on('updateUserList', (userList) => {
+      updateUserList(userList);
+    });
+
+    socket.on('roomFull', () => {
+      alert('Room is full. Please try another room.');
+    });
+
+    socket.on('roomNotFound', () => {
+      alert('Room not found. Please enter a valid room name.');
+    });
+
+    socket.on('startScreenShare', (peerId) => {
+      const call = peer.call(peerId, myStream);
+      const video = document.createElement('video');
+      call.on('stream', (userVideoStream) => {
+        addVideoStream(video, userVideoStream);
+      });
+      call.on('close', () => {
+        video.remove();
+      });
+    });
+
+    function joinRoom() {
+      const roomInput = document.getElementById('roomInput');
+      const room = roomInput.value.trim();
+      if (room !== '') {
+        socket.emit('joinRoom', room);
+        roomInput.value = '';
+      }
+    }
+
+    function startScreenShare() {
+      const roomInput = document.getElementById('roomInput');
+      const room = roomInput.value.trim();
+      if (room !== '') {
+        socket.emit('requestScreenShare', room);
+      }
+    }
+
+    function addVideoStream(video, stream) {
+      video.srcObject = stream;
+      video.addEventListener('loadedmetadata', () => {
+        video.play();
+      });
+      document.getElementById('screenShare').appendChild(video);
+    }
+
+    function updateUserList(userList) {
+      const userListDiv = document.getElementById('userList');
+      userListDiv.innerHTML = '<h3>Users in Room:</h3>';
+      userList.forEach((userId) => {
+        const userItem = document.createElement('div');
+        userItem.textContent = userId;
+        userListDiv.appendChild(userItem);
+      });
+    }
+  </script>
+</body>
+</html>

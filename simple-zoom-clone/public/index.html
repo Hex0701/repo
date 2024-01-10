@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Zoom Clone</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+
+    #video-container {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    video {
+      max-width: 100%;
+      max-height: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #actions-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    #message-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js" defer></script>
+  <script src="/socket.io/socket.io.js" defer></script>
+  <script src="app.js" defer></script>
+  <h1>Simple Zoom Clone</h1>
+
+  <div id="video-container"></div>
+
+  <div id="actions-container">
+    <!-- Add a button to start screen sharing for the current user -->
+    <button onclick="startScreenShare()">Start Screen Share</button>
+    
+    <!-- Add a button to stop screen sharing -->
+    <button onclick="stopScreenShare()">Stop Screen Share</button>
+  </div>
+
+  <div id="message-container"></div>
+</body>
+</html>
