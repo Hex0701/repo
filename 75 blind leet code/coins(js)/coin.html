@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "ans"></div>
+    <script>
+
+        // find the gdenomination
+        function findDenom(coins, amount) {
+            let gdenom = 0;
+            for (let index = 0; index < coins.length; index++) {
+                if (gdenom>coins[index] || coins[index] <= amount)
+                gdenom = coins[index];                
+            }
+            return gdenom;
+        }
+
+        // split amt in factors of denominations
+        function splitDenom(coins, amount) {
+            let factors = [];
+            while (amount > 0) {
+                let gdenom = findDenom(coins, amount)
+                let remainder = amount % gdenom;
+                console.log("remainder" + remainder)
+                amount -= remainder;
+                factors.push(amount);
+                amount = remainder;
+            }
+            return factors;
+        }
+
+        // count
+        let coins = new Array(1,3,4);
+        let amount = 24;
+        let factors = splitDenom(coins, amount);
+        let ctr = 0;
+
+        factors.forEach(factor => {
+            let gcoin = findDenom(coins, factor)
+            ctr += factor/gcoin;
+        })
+
+        // function sub(coins, amount){
+        //     let ctr=0;
+        //     let gdenom = 0;
+        //     coins.forEach(coin => {
+        //         while (amount>coin || amount != 0) {
+        //             if (coin > gdenom) {
+        //                 gdenom = coin
+        //                 amount -= gdenom
+        //                 ctr++
+        //             }
+        //         }
+        //     });
+        //     return ctr;
+        // }
+
+        const div = document.getElementById("ans");
+        console.log(ctr)
+        div.innerHTML = ctr;
+    </script>
+</body>
+</html>

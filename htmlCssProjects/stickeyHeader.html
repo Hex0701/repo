@@ -1,0 +1,120 @@
+<!-- Disclamer : discriptions are AI generated 
+  
+This webpage features a fixed header that turns sticky upon scrolling. The content 
+section contains styled div elements with a responsive design. The minimalist 
+layout, using Arial as the font, showcases placeholder text and employs subtle
+shadows for a clean and professional appearance.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stickyHeader </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    body {
+      padding-top: 100px; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    section{
+      padding-top: 50px;
+    }
+
+    div{
+      margin: 20px;
+      padding: 10px;
+      min-height: 50px;
+      max-width: 400px;
+      background-color: #fff;
+      border: 1px solid #9e9d9d;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+  </style>
+  <script>
+    // Add a class to the header when the user scrolls down
+    window.onscroll = function() {
+      var header = document.querySelector('header');
+      header.classList.toggle('sticky', window.pageYOffset > 0)
+    };
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Sticky Header</h1>
+  </header>
+
+  <section>
+    <div>
+      <h2>Page Content</h2>
+    </div>
+    
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam quasi sit quaerat
+      laborum debitis enim non! Labore suscipit veritatis velit in. Tempore, temporibus! Aut,
+      eum quos ipsam laborum sunt veniam corporis, maxime, vero quidem nobis placeat officia
+      esse facere. Qui fugiat adipisci unde tempore sint, commodi deserunt repellendus 
+      suscipit totam alias mollitia vel! Neque laborum omnis et? Error consectetur atque
+      ut non modi quo tempora officia quas, aperiam quos sunt sapiente. Libero officia 
+      animi dolorum! Qui dicta inventore corporis expedita.</div>
+    <div>Accusamus incidunt consequatur ratione, fugiat nesciunt animi temporibus perferendis
+      corrupti tenetur aperiam magnam id, suscipit reprehenderit nihil error, quasi eum 
+      iusto voluptates non maiores? Architecto quo dolor delectus neque explicabo doloremque
+      enim ex, provident ea, quisquam suscipit distinctio dicta dolores modi illo nobis 
+      itaque. Temporibus nemo sunt qui, odit consequuntur accusantium culpa corporis 
+      voluptate ad alias vel quaerat nostrum eveniet fuga obcaecati numquam sapiente dolor
+      quas tempore velit? Blanditiis fuga error nobis illo in facilis ex exercitationem. 
+      Nulla, suscipit distinctio!</div>
+    <div>Quasi nostrum, nobis pariatur eaque maxime architecto iusto dolorem illo placeat
+      ullam animi officiis nemo a quisquam enim aperiam corporis eos minima dolor dicta 
+      vitae accusantium qui sapiente. Accusamus debitis quia quos reprehenderit quod autem 
+      omnis, eveniet expedita et ducimus placeat ipsa iusto accusantium distinctio, saepe 
+      veniam sint enim laudantium harum minus, ut recusandae necessitatibus repellat. 
+      Placeat quia numquam quod magni ad. Nobis neque deleniti rem quam accusantium eum. 
+      Officia excepturi repellendus mollitia nesciunt repudiandae sequi cum? Repellendus, 
+      deleniti veritatis.</div>
+    <div>Mollitia numquam atque enim cumque culpa! Consequatur accusantium quam hic 
+      assumenda? In magnam quam ad cupiditate itaque provident, dolore doloremque nisi quo 
+      minus expedita quas? Dolor iste nam impedit. Aut laboriosam quidem quod repellendus, 
+      maiores, nulla consequuntur sed sunt, unde magni officiis commodi. Incidunt laudantium 
+      reprehenderit sed, ab blanditiis itaque corporis laborum, quisquam obcaecati rerum 
+      reiciendis dolorum. Est obcaecati suscipit alias officiis nesciunt, quaerat tempora, 
+      tempore, libero enim fugiat perferendis soluta veniam! Qui ea ab, at molestiae 
+      aspernatur corporis repellat?</div>
+    <div>Saepe commodi perspiciatis architecto ullam, repellat provident voluptates 
+      odit vitae voluptate nostrum consequatur doloribus minus porro error libero 
+      esse ut. Quibusdam vero similique asperiores eum voluptate? Itaque, molestiae? Error 
+      incidunt ratione magni! Harum voluptas laborum libero nostrum a cupiditate fugiat 
+      provident, officiis velit ratione, voluptatibus doloremque. Ducimus consectetur modi 
+      molestiae, inventore incidunt sunt nostrum repellendus delectus perferendis, atque 
+      nobis id, nulla eum veniam. Modi minima quasi excepturi aliquid id vel atque voluptatum 
+      tenetur ad, dolore culpa cumque, earum fugit incidunt.</div>
+    <div>Soluta magni rem cum minima sint, reprehenderit atque unde ipsum est accusamus
+      omnis maxime culpa harum sed pariatur inventore! Voluptatum doloremque, repellendus
+      quis repudiandae, odio rerum quas dolores necessitatibus consequatur expedita 
+      modi qui consequuntur facere dolor quidem itaque! Aspernatur unde doloribus 
+      temporibus, earum molestias, et error deleniti quo modi ipsum aperiam possimus 
+      nam debitis? Voluptatibus aut facere reprehenderit debitis magnam magni 
+      architecto libero eveniet obcaecati, voluptate fugit iusto repudiandae, iure 
+      ipsum nisi sed necessitatibus, corrupti tenetur neque minus commodi? Neque.</div>
+  </section>
+</body>
+</html>

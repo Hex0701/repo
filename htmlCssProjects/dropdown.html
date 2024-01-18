@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funky Dropdowns</title>
+  <style>
+    /* Common style for the dropdown container */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    /* Common style for the dropdown button */
+    .dropdown-button {
+      background-color: #3498db; /* Blue */
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Common style for the dropdown content (hidden by default) */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #2ecc71; /* Green */
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      transform-origin: top;
+      transform: scaleY(0);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Common style for the dropdown links */
+    .dropdown-content a {
+      color: white;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Change color on hover */
+    .dropdown-content a:hover {
+      background-color: #2980b9; /* Darker blue on hover */
+    }
+
+    /* Show the dropdown content when the dropdown button is hovered over */
+    .dropdown:hover .dropdown-content {
+      display: block;
+      transform: scaleY(1);
+    }
+
+    /* Change button color on hover */
+    .dropdown:hover .dropdown-button {
+      background-color: #2c3e50; /* Darker gray on hover */
+    }
+
+    /* Additional styles for more fun */
+    .dropdown.yellow .dropdown-button {
+      background-color: #f39c12; /* Yellow */
+    }
+
+    .dropdown.yellow .dropdown-content {
+      background-color: #e67e22; /* Orange */
+    }
+
+    .dropdown.purple .dropdown-button {
+      background-color: #9b59b6; /* Purple */
+    }
+
+    .dropdown.purple .dropdown-content {
+      background-color: #8e44ad; /* Dark purple */
+    }
+
+    .dropdown.pink .dropdown-button {
+      background-color: #e91e63; /* Pink */
+    }
+
+    .dropdown.pink .dropdown-content {
+      background-color: #d81b60; /* Dark pink */
+    }
+
+    .dropdown.orange .dropdown-button {
+      background-color: #e67e22; /* Orange */
+    }
+
+    .dropdown.orange .dropdown-content {
+      background-color: #d35400; /* Dark orange */
+    }
+  </style>
+</head>
+<body>
+
+<div class="dropdown">
+  <button class="dropdown-button">Primary Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Option 1</a>
+    <a href="#">Option 2</a>
+    <a href="#">Option 3</a>
+  </div>
+</div>
+
+<div class="dropdown yellow">
+  <button class="dropdown-button">Yellow Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Sunshine </a>
+    <a href="#">Banana </a>
+    <a href="#">Lemon </a>
+  </div>
+</div>
+
+<div class="dropdown purple">
+  <button class="dropdown-button">Purple Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Grape </a>
+    <a href="#">Lavender </a>
+    <a href="#">Plum </a>
+  </div>
+</div>
+
+<div class="dropdown pink">
+  <button class="dropdown-button">Pink Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Bubblegum </a>
+    <a href="#">Cotton Candy </a>
+    <a href="#">Rose </a>
+  </div>
+</div>
+
+<div class="dropdown orange">
+  <button class="dropdown-button">Orange Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Tangerine </a>
+    <a href="#">Carrot </a>
+    <a href="#">Pumpkin </a>
+  </div>
+</div>
+
+</body>
+</html>

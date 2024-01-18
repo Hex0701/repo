@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pinterest Clone</title>
+    <script>
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+            const pinContainer = document.getElementById("pin-container")
+
+            for (let index = 0; index < 100; index++) {
+                let x = getRandomInt(1, 100);
+                const pin = document.createElement("div")
+                const img = document.createElement("img")
+                pin.setAttribute("class", "pin")
+                img.setAttribute("src", `https://picsum.photos/500/900?random=${x}`)
+                pin.appendChild(img)
+                pinContainer.appendChild(pin)
+            }
+
+            const pins = document.querySelectorAll(".pin")
+
+            pins.forEach(pin => {
+                pin.addEventListener('mouseover', function() {
+                    const pinInfo = document.createElement("div")
+                    pinInfo.setAttribute("class", "pinInfo")
+                    pinInfo.innerHTML="hiiiiiiiiii"
+                    pin.appendChild(pinInfo)
+
+                });                
+                pin.addEventListener('mouseout', function() {
+                    const pinInfo = document.querySelector(".pinInfo")
+                    pinInfo.remove()
+                });                
+            });
+
+        })
+    </script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #e60023;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        #div-main {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            margin-bottom: 100px;
+        }
+
+        #pin-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .pin {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: zoom-in;
+        }
+
+        .pinInfo {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: relative;
+        }
+
+        .pin img {
+            width: 100%;
+            height: 100%;
+        }
+
+        footer {
+            background-color: #e60023;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Pinterest Clone</h1>
+    </nav>
+    
+    <div id="div-main">
+        <div id="pin-container">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Pinterest Clone</p>
+    </footer>
+</body>
+</html>
