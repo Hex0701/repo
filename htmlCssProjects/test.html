@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playing Card</title>
+  <script >
+    const club = "&#9824;"
+    const diamonds = "&#9830;"
+    const heart = "&#9829;"
+    const spades = "&#9827;"
+
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function selectRand(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function isCardInDeck(deck, card) {
+      return deck.some(existingCard => existingCard.suit === card.suit 
+                                      && existingCard.num === card.num);
+    }
+    
+
+    function makeDeck() {
+      const suits = [club, diamonds, heart, spades]
+      let deck = [] 
+      
+      for (let index = 0; index < 300; index++) {
+        let rank = getRandomInt(1, 13)
+
+        let card = {
+          suit : selectRand(suits),
+          num : rank
+        }
+        
+        if (!isCardInDeck(deck, card)){
+          deck.push(card)
+        }
+      }
+      return deck
+    }
+
+    function makeCard(cardInfo) {
+      const container = document.getElementById("container")
+      const card = document.createElement("div")
+      card.setAttribute("class", "card")
+      
+      const outersuit = document.createElement("div")
+      outersuit.setAttribute("class", "center outersuit")
+      for (let index = 0; index < cardInfo.num; index++) {
+        const innerSuitDiv = document.createElement("div")
+        innerSuitDiv.setAttribute("class", "suit")
+        innerSuitDiv.innerHTML = cardInfo.suit
+        outersuit.appendChild(innerSuitDiv)
+      }
+
+      let rank = cardInfo.num 
+      switch (rank) {
+        case 1:
+          rank = 'A'
+          break;
+        case 11:
+          rank = 'J'
+          break;
+        case 12:
+          rank = 'Q'
+          break;
+        case 13:
+          rank = 'K'
+          break;
+      }
+      
+      const rankDiv = document.createElement("div")
+      rankDiv.setAttribute("class", "rank")
+      rankDiv.innerHTML = rank
+      
+      const invrankDiv = document.createElement("div")
+      invrankDiv.setAttribute("class", "rank inverted")
+      invrankDiv.innerHTML = rank
+      
+      card.appendChild(rankDiv)
+      card.appendChild(outersuit)
+      card.appendChild(invrankDiv)
+      
+      container.appendChild(card)
+    }
+    
+    document.addEventListener("DOMContentLoaded", function (){
+
+      let game = false
+      const deck = makeDeck()
+      console.log(deck)
+      
+      const btnHit = document.getElementById("hit")
+      
+      hit.addEventListener("click", function(){
+        let cardInfo = selectRand(deck)
+        makeCard(cardInfo)
+
+      })
+
+    })
+
+  </script>
+  <style>
+    #container{
+      display: flex;
+    }
+    .card {
+      width: 150px;
+      height: 220px;
+      background-color: #fff;
+      border: 1px solid #000;
+      border-radius: 10px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .rank {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .inverted{
+      transform: rotate(180deg);
+    }
+
+    .suit {
+      width: 20%;
+      height: 20%;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .outersuit {
+      display: grid;
+      grid-template-columns: repeat(3, 100%);
+    }
+  </style>
+</head>
+<body>
+<div id="container"></div>
+  <button id="hit">hit</button>
+  <button onclick="game = true">Start</button>
+  <button onclick="game = false">Quit</button>
+</body>
+</html>
