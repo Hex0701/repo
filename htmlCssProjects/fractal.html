@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>D</title>
+    </head>
+
+    <body>
+        <canvas id="screen" height="500" width="500">
+
+        </canvas>
+        <script>
+            m = document.getElementById("screen").getContext("2d")
+            atom = function (x, y, c) { m.fillStyle = c; m.fillRect(x, y, 1, 1) }
+
+            function distbw(x1, x2,) { return (x1 + x2) / 2;}
+            
+            function random_item(items)
+                {
+                return items[Math.floor(Math.random()*items.length)];
+                }
+
+            var a = 0
+            var b = 0
+
+            for (let i = 0; i < 500; i++) {
+                atom (i, 0, "red");   
+            }
+
+            for (let i = 0; i < 500; i++) {
+                atom (0, i, "green");   
+            }
+
+            p1 = [200, 10]
+            p2 = [300, 200]
+            p3 = [100, 200]
+            pn = [p1, p2, p3]
+
+            atom(p1[0], p1[1], "red")
+            atom(p2[0], p2[1], "orange")
+            atom(p3[0], p3[1], "orange")
+            atom(0, 0, "black")
+
+            a = distbw(p1[0], p2[0]);
+            b = distbw(p1[1], p2[1]);
+            px = [a, b];
+
+            atom(px[0], px[1], "black")
+
+            for (i =0; i < 10000; i++){
+                pc = random_item(pn)
+
+                a = distbw(pc[0], px[0]);
+                b = distbw(pc[1], px[1]);
+                px = [a, b];
+                atom(px[0], px[1], "orange")
+            }
+        </script>
+    </body>
+
+</html>

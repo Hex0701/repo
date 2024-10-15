@@ -2,11 +2,9 @@
 const socket = io('/')
 const videogrid = document.getElementById('video-grid')
 const mypeer = new Peer(undefined,{
-    host: 'cdfkbxdm-3000.use.devtunnels.ms/',
+    host: '/',
     port: '3001',
-    path: '/',
-    secure: true,
-    debug: true
+
 })
   
 
